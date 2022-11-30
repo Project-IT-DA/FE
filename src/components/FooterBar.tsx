@@ -3,7 +3,7 @@ import { ChatIcon, CommunityIcon, HomeIcon, MypageIcon } from "../assets/icons";
 
 const FooterBar = () => {
   return (
-    <div className="fixed z-40 bottom-0 w-[480px] h-[70px] bg-white border">
+    <div className="fixed z-40 bottom-0 w-[480px] sm:w-full h-[70px] bg-white border-2">
       <div className="grid grid-cols-4 gap-x-4 justify-items-center mt-2">
         <Link to={`#`}>
           <div>
