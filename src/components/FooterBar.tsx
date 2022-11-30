@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChatIcon, CommunityIcon, HomeIcon } from "../assets/icons";
+import { ChatIcon, CommunityIcon, HomeIcon, MypageIcon } from "../assets/icons";
 
 const FooterBar = () => {
   return (
@@ -21,7 +21,9 @@ const FooterBar = () => {
           </div>
         </Link>
         <Link to={`#`}>
-          <div className="bg-blue-300">메인</div>
+          <div>
+            <MypageIcon />
+          </div>
         </Link>
       </div>
     </div>
