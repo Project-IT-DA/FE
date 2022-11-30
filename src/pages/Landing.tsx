@@ -1,7 +1,12 @@
 import React from "react";
+import LandingHeader from "../components/LandingHeader";
 
 const Landing = () => {
-  return <div>라우팅테스트</div>;
+  return (
+    <div className="w-full bg-[#DDDBE9] h-full">
+      <LandingHeader></LandingHeader>
+    </div>
+  );
 };
 
 export default Landing;
