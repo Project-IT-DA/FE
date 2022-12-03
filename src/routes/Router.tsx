@@ -9,13 +9,13 @@ import PostDetail from "../pages/posts/PostDetail";
 const Router = () => {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="post/:id" element={<PostDetail />} />
         <Route path="mypage" element={<MyPage />} />
       </Routes>
-      {/* <FooterBar /> */}
+      <FooterBar />
     </BrowserRouter>
   );
 };
