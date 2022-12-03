@@ -1,24 +1,17 @@
 import React, { useRef, Dispatch, SetStateAction } from "react";
+import styled from "styled-components";
 
 export function Carousel(props: {
   images: { id: number; src: string; alt?: string }[];
   num: number;
   setNum: Dispatch<SetStateAction<number>>;
 }) {
-  const { images, num, setNum } = props;
+  const { images, num } = props;
   const imageBox = useRef<HTMLDivElement>(null);
-  const nums = [
-    "translate-x-[0%]",
-    "translate-x-[-100%]",
-    "translate-x-[-200%]",
-  ];
 
   return (
     <div className="bg-[#dcdae8] overflow-hidden m-auto">
-      <div
-        ref={imageBox}
-        className={`flex items-center w-full h-full ${nums[num]} transition duration-500 ease-in-out`}
-      >
+      <StContainer ref={imageBox} num={num}>
         {images.map(image => {
           return (
             <img
@@ -29,7 +22,16 @@ export function Carousel(props: {
             />
           );
         })}
-      </div>
+      </StContainer>
     </div>
   );
 }
+
+const StContainer = styled.div<{ num: number }>`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-${props => props.num * 100}%);
+  transition: transform 500ms ease-in-out;
+`;
