@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <div
       className={classNames("border-b pb-4", {
-        hidden: pathname === "/",
+        hidden: pathname === "/" || pathname == "/login",
       })}
     >
       <img src="/images/Logo.png" className="w-[60px] mt-4 ml-4" />

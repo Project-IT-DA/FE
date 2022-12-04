@@ -21,7 +21,7 @@ const LandingHeader = ({ num, setNum }: Inum) => {
         {dotArray.map(dot => {
           return (
             <div
-              className={`border-2 rounded-[50%] w-4 h-4 cursor-pointer ${
+              className={`border-2 rounded-[50%] w-4 h-4 ${
                 num === dot ? "bg-[#ED2A70]" : "bg-white"
               }`}
               key={dot}
