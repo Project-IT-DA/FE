@@ -15,41 +15,48 @@ export function Carousel(props: {
   const { images, num } = props;
   const imageBox = useRef<HTMLDivElement>(null);
 
-  const [mouseDownClientX, setMouseDownClientX] = useState(0);
-  const [mouseDownClientY, setMouseDownClientY] = useState(0);
-  const [mouseUpClientX, setMouseUpClientX] = useState(0);
-  const [mouseUpClientY, setMouseUpClientY] = useState(0);
+  // const [isClick, setIsClick] = useState(false);
+  // const [mouseDownClientX, setMouseDownClientX] = useState(0);
+  // const [mouseUpClientX, setMouseUpClientX] = useState(0);
 
-  const onMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    setMouseDownClientX(e.clientX);
-    setMouseDownClientY(e.clientY);
-  };
-  const onMouseUp = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    setMouseUpClientX(e.clientX);
-    setMouseUpClientY(e.clientY);
-  };
-  console.log(mouseDownClientX, mouseUpClientX);
-  useEffect(() => {
-    const dragSpaceX = Math.abs(mouseDownClientX - mouseUpClientX);
-    const dragSpaceY = Math.abs(mouseDownClientY - mouseUpClientY);
-    const vector = dragSpaceX / dragSpaceY;
+  // const onMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  //   setIsClick(true);
+  //   setMouseDownClientX(e.pageX);
+  // };
 
-    if (mouseDownClientX !== 0 && dragSpaceX > 100 && vector > 2) {
-      if (mouseUpClientX < mouseDownClientX) {
-        setNum(num => num + 1);
-      } else if (mouseUpClientX > mouseDownClientX) {
-        setNum(num => num - 1);
-      }
-    }
-  }, [mouseUpClientX]);
+  // const onMouseLeave = () => {
+  //   setIsClick(false);
+  // };
+
+  // const onMouseUp = () => {
+  //   setIsClick(false);
+  //   const imgX = mouseDownClientX - mouseUpClientX;
+
+  //   if (imgX < -100 && imageBox.current !== null) {
+  //     imageBox.current.style.transform = `translate(${imgX}px)`;
+  //     // setNum(num => num - 1);
+  //   } else if (imgX > 100 && imageBox.current !== null) {
+  //     imageBox.current.style.transform = `translate(-${imgX}px)`;
+  //     // setNum(num => num + 1);
+  //   }
+  //   console.log(imgX);
+  // };
+
+  // const onMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  //   if (!isClick) return;
+  //   e.preventDefault();
+  //   setMouseUpClientX(e.pageX);
+  // };
 
   return (
     <div className="bg-[#dcdae8] overflow-hidden m-auto">
       <StContainer
         ref={imageBox}
         num={num}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
+        // onMouseDown={onMouseDown}
+        // onMouseUp={onMouseUp}
+        // onMouseLeave={onMouseLeave}
+        // onMouseMove={onMouseMove}
       >
         {images.map(image => {
           return (
