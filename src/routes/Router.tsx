@@ -6,6 +6,7 @@ import Landing from "../pages/landing/Landing";
 import MyPage from "../pages/MyPage";
 
 import PostDetail from "../pages/posts/PostDetail";
+import PostList from "../pages/posts/PostList";
 import LandingLogin from "../pages/landing/LandingLogin";
 
 const Router = () => {
@@ -14,6 +15,7 @@ const Router = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/post" element={<PostList />} />
         <Route path="/login" element={<LandingLogin />} />
         <Route path="post/:id" element={<PostDetail />} />
         <Route path="mypage" element={<MyPage />} />
