@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  // SearchIcon,
-  // MenuIcon,
-  HeartIcon,
-  // FilterIcon,
-} from "../../assets/icons";
+import { HeartIcon } from "../../assets/icons";
 import Search from "./Search";
 
 function PostList() {
