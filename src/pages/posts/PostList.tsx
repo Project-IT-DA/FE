@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  SearchIcon,
-  MenuIcon,
+  // SearchIcon,
+  // MenuIcon,
   HeartIcon,
-  FilterIcon,
+  // FilterIcon,
 } from "../../assets/icons";
 import Search from "./Search";
 
