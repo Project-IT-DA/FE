@@ -12,51 +12,43 @@ export function Carousel(props: {
   num: number;
   setNum: Dispatch<SetStateAction<number>>;
 }) {
-  const { images, num } = props;
+  const { images, setNum, num } = props;
   const imageBox = useRef<HTMLDivElement>(null);
 
-  // const [isClick, setIsClick] = useState(false);
-  // const [mouseDownClientX, setMouseDownClientX] = useState(0);
-  // const [mouseUpClientX, setMouseUpClientX] = useState(0);
+  const [isClick, setIsClick] = useState(false);
+  const [mouseDownClientX, setMouseDownClientX] = useState(0);
+  const [mouseUpClientX, setMouseUpClientX] = useState(0);
 
-  // const onMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-  //   setIsClick(true);
-  //   setMouseDownClientX(e.pageX);
-  // };
+  const onMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    setIsClick(true);
+    setMouseDownClientX(e.pageX);
+  };
 
-  // const onMouseLeave = () => {
-  //   setIsClick(false);
-  // };
+  const onMouseUp = () => {
+    setIsClick(false);
+    const imgX = mouseDownClientX - mouseUpClientX;
 
-  // const onMouseUp = () => {
-  //   setIsClick(false);
-  //   const imgX = mouseDownClientX - mouseUpClientX;
+    if (imgX < -50 && num > 0) {
+      setNum(num => num - 1);
+    } else if (imgX > 50 && num < 2) {
+      setNum(num => num + 1);
+    }
+  };
 
-  //   if (imgX < -100 && imageBox.current !== null) {
-  //     imageBox.current.style.transform = `translate(${imgX}px)`;
-  //     // setNum(num => num - 1);
-  //   } else if (imgX > 100 && imageBox.current !== null) {
-  //     imageBox.current.style.transform = `translate(-${imgX}px)`;
-  //     // setNum(num => num + 1);
-  //   }
-  //   console.log(imgX);
-  // };
-
-  // const onMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-  //   if (!isClick) return;
-  //   e.preventDefault();
-  //   setMouseUpClientX(e.pageX);
-  // };
+  const onMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    if (!isClick) return;
+    e.preventDefault();
+    setMouseUpClientX(e.pageX);
+  };
 
   return (
     <div className="bg-[#dcdae8] overflow-hidden m-auto">
       <StContainer
         ref={imageBox}
         num={num}
-        // onMouseDown={onMouseDown}
-        // onMouseUp={onMouseUp}
-        // onMouseLeave={onMouseLeave}
-        // onMouseMove={onMouseMove}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+        onMouseMove={onMouseMove}
       >
         {images.map(image => {
           return (
@@ -81,6 +73,6 @@ const StContainer = styled.div<{ num: number }>`
   transform: translateX(-${props => props.num * 100}%);
   transition: transform 500ms ease-in-out;
 `;
-function setNum(arg0: (num: any) => any) {
-  throw new Error("Function not implemented.");
-}
+// function setNum(arg0: (num: any) => any) {
+//   throw new Error("Function not implemented.");
+// }

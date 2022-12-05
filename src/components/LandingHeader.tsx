@@ -23,7 +23,10 @@ const LandingHeader = ({ num, setNum }: Inum) => {
             <div
               className={`border-2 rounded-[50%] w-4 h-4 ${
                 num === dot ? "bg-[#ED2A70]" : "bg-white"
-              }`}
+              } cursor-pointer`}
+              onClick={() => {
+                setNum(dot);
+              }}
               key={dot}
             ></div>
           );
