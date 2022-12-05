@@ -6,6 +6,7 @@ import MyPage from "../pages/MyPage";
 
 import PostDetail from "../pages/posts/PostDetail";
 import LandingLogin from "../pages/landing/LandingLogin";
+import PostCreate from "../pages/posts/PostCreate";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path="/login" element={<LandingLogin />} />
         <Route path="post/:id" element={<PostDetail />} />
         <Route path="mypage" element={<MyPage />} />
+        <Route path="post/create" element={<PostCreate />} />
       </Routes>
       <FooterBar />
     </BrowserRouter>
