@@ -48,6 +48,31 @@ const MyPage = () => {
       <div className="w-full mt-[15px] flex justify-center">
         <hr className="bg-[#949494] w-11/12"></hr>
       </div>
+      <div className="mt-[15px] ml-7 flex justify-flex-start w-11/12 flex-col">
+        <div>
+          <p className="text-base font-semibold">활동내역</p>
+          <div className="mt-[15px] bg-[#F59AA7] rounded-lg w-[400px] justify-flex-start">
+            <button className="pt-5 pb-5 pr-7 pl-7">
+              😀찐거래 님의 커뮤니티 게시글 &gt;
+            </button>
+            <button className="pt-5 pb-5 pr-7 pl-7">
+              👍찐거래 님의 커뮤니티 코멘트 &gt;
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <p className="mt-[30px] text-base font-semibold">
+            회원탈퇴 및 로그아웃
+          </p>
+          <div className="mt-[15px] bg-[#F59AA7] rounded-lg w-[400px] justify-flex-start">
+            <button className="pt-5 pb-5 pr-7 pl-7">
+              😢회원탈퇴하고 잇다와 끊어지기 &gt;
+            </button>
+            <button className="pt-5 pb-5 pr-7 pl-7">🖐로그아웃 &gt;</button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
