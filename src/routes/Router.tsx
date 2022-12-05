@@ -8,6 +8,7 @@ import MyPage from "../pages/MyPage";
 import PostDetail from "../pages/posts/PostDetail";
 import PostList from "../pages/posts/PostList";
 import LandingLogin from "../pages/landing/LandingLogin";
+import PostCreate from "../pages/posts/PostCreate";
 
 const Router = () => {
   return (
@@ -18,8 +19,9 @@ const Router = () => {
         <Route path="/post" element={<PostList />} />
         <Route path="/login" element={<LandingLogin />} />
         <Route path="post/:id" element={<PostDetail />} />
-        <Route path="mypage" element={<MyPage />} />
-        <Route path="chat" element={<ChatList />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="post/create" element={<PostCreate />} />
+        <Route path="/chat" element={<ChatList />} />
       </Routes>
       <FooterBar />
     </BrowserRouter>
