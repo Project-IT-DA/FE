@@ -52,7 +52,7 @@ export function Carousel(props: {
   };
 
   return (
-    <div className="bg-[#dcdae8] overflow-hidden m-auto">
+    <div className="bg-[#dcdae8] overflow-hidden m-auto absolute">
       <StContainer
         ref={imageBox}
         num={num}
@@ -68,7 +68,7 @@ export function Carousel(props: {
               key={image.src}
               src={image.src}
               alt={image.alt}
-              className="w-screen h-screen flex-none"
+              className="w-full h-screen max-h-full flex-none"
             />
           );
         })}

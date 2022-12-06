@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Carousel } from "../../components/Carousel";
+import { Carousel } from "./Carousel";
 import images from "../../data/landingImages";
-import LandingHeader from "../../components/LandingHeader";
+import LandingHeader from "./LandingHeader";
 import Arrow from "../../elements/Arrow";
 import StartButton from "../../elements/StartButton";
 
