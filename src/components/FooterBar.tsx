@@ -12,25 +12,17 @@ const FooterBar = () => {
       )}
     >
       <div className="grid grid-cols-4 gap-x-4 justify-items-center mt-2">
-        <Link to={`#`}>
-          <div>
-            <HomeIcon />
-          </div>
+        <Link to="/post">
+          <HomeIcon />
+        </Link>
+        <Link to={`/chat`}>
+          <ChatIcon />
         </Link>
         <Link to={`#`}>
-          <div>
-            <ChatIcon />
-          </div>
+          <CommunityIcon />
         </Link>
-        <Link to={`#`}>
-          <div>
-            <CommunityIcon />
-          </div>
-        </Link>
-        <Link to={`#`}>
-          <div>
-            <MypageIcon />
-          </div>
+        <Link to={`/mypage`}>
+          <MypageIcon />
         </Link>
       </div>
     </div>
