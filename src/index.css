@@ -4,6 +4,19 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
 
+@font-face {
+  font-family: "It-Da";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/JalnanOTF.otf");
+}
+@font-face {
+  font-family: "It-Da";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/JalnanOTF.otf");
+}
+
 
 *,
 *::before,
