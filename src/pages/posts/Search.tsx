@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { ArrowUpIcon } from "../../assets/icons";
+import { ArrowUpIcon } from "../../assets/icons";
 
 function Search() {
   const [isClicked, setIsClicked] = useState(false);
@@ -19,11 +19,11 @@ function Search() {
       <div className="w-full h-fit">
         <div className="flex justify-between py-3">
           <p className="font-bold">카테고리</p>
-          {/* <ArrowUpIcon
+          <ArrowUpIcon
             className="w-4 h-4"
             onClick={showCategory}
             cursor="pointer"
-          /> */}
+          />
         </div>
         <div
           className={`${

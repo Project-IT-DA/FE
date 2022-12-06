@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontFamily: {
+      itda: ["it-da", "Noto Sans KR", "sans-serif"],
+    },
     screens: {
       sm: { max: "480px" },
       md: { max: "640px" },
