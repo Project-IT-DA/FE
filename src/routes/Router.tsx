@@ -4,13 +4,13 @@ import { Header } from "../components/Header";
 import ChatList from "../pages/chat/ChatList";
 import Landing from "../pages/landing/Landing";
 import MyPage from "../pages/MyPage";
-
 import PostDetail from "../pages/posts/PostDetail";
 import PostList from "../pages/posts/PostList";
 import LandingLogin from "../pages/landing/LandingLogin";
 import PostCreate from "../pages/posts/PostCreate";
 import ChatDetail from "../pages/chat/ChatDetail";
 import CommunityList from "../pages/community/CommunityList";
+
 
 const Router = () => {
   return (
