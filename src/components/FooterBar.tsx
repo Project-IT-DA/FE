@@ -18,7 +18,7 @@ const FooterBar = () => {
         <Link to={`/chat`}>
           <ChatIcon />
         </Link>
-        <Link to={`#`}>
+        <Link to={`/community`}>
           <CommunityIcon />
         </Link>
         <Link to={`/mypage`}>

@@ -5,7 +5,11 @@ import { ReactComponent as MypageIcon } from "./MypageIcon.svg";
 import { ReactComponent as HeartIcon } from "./HeartIcon.svg";
 import { ReactComponent as MsgIcon } from "./MsgIcon.svg";
 import { ReactComponent as EditIcon } from "./EditIcon.svg";
+import { ReactComponent as CameraIcon } from "./CameraIcon.svg";
+import { ReactComponent as CancelIcon } from "./CancelIcon.svg";
 import { ReactComponent as ArrowUpIcon } from "./ArrowUpIcon.svg";
+import { ReactComponent as MenuIcon } from "./MenuIcon.svg";
+import { ReactComponent as CommentIcon } from "./CommentIcon.svg";
 export {
   HomeIcon,
   ChatIcon,
@@ -14,5 +18,9 @@ export {
   HeartIcon,
   MsgIcon,
   EditIcon,
+  CameraIcon,
+  CancelIcon,
   ArrowUpIcon,
+  MenuIcon,
+  CommentIcon,
 };

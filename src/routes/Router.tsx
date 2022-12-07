@@ -4,11 +4,12 @@ import { Header } from "../components/Header";
 import ChatList from "../pages/chat/ChatList";
 import Landing from "../pages/landing/Landing";
 import MyPage from "../pages/MyPage";
-
 import PostDetail from "../pages/posts/PostDetail";
 import PostList from "../pages/posts/PostList";
 import LandingLogin from "../pages/landing/LandingLogin";
 import PostCreate from "../pages/posts/PostCreate";
+import ChatDetail from "../pages/chat/ChatDetail";
+import CommunityList from "../pages/community/CommunityList";
 
 const Router = () => {
   return (
@@ -22,6 +23,8 @@ const Router = () => {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="post/create" element={<PostCreate />} />
         <Route path="/chat" element={<ChatList />} />
+        <Route path="chat/:id" element={<ChatDetail />} />
+        <Route path="/community" element={<CommunityList />} />
       </Routes>
       <FooterBar />
     </BrowserRouter>
