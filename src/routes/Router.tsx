@@ -11,7 +11,6 @@ import PostCreate from "../pages/posts/PostCreate";
 import ChatDetail from "../pages/chat/ChatDetail";
 import CommunityList from "../pages/community/CommunityList";
 
-
 const Router = () => {
   return (
     <BrowserRouter>
