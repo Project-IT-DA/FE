@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 
 type onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => void;
+type onDeleteType = (idx: number) => void;
 
 const useMultiUploadImg = (NumOfPhoto: number) => {
   const [imgBase64, setImgBase64] = useState<string[]>([]);
@@ -26,7 +27,6 @@ const useMultiUploadImg = (NumOfPhoto: number) => {
               const base64 = reader.result;
               if (base64) {
                 const base64Sub = base64.toString();
-                //console.log(base64Sub);
                 setImgBase64(imgBase64 => [...imgBase64, base64Sub]);
               }
             };
@@ -37,7 +37,17 @@ const useMultiUploadImg = (NumOfPhoto: number) => {
     [],
   );
 
-  return [imgBase64, handleChangeFile] as [string[], onChangeType];
+  const onDeleteFile = (idx: number) => {
+    const copy = imgBase64.filter((ib, i) => ib[i] !== ib[idx]);
+    console.log(copy);
+    setImgBase64(copy);
+  };
+
+  return [imgBase64, handleChangeFile, onDeleteFile] as [
+    string[],
+    onChangeType,
+    onDeleteType,
+  ];
 };
 
 export default useMultiUploadImg;
