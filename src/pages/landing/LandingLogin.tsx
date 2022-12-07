@@ -23,13 +23,13 @@ const LandingLogin = () => {
             <span className="text-[#ED2A70]">IT</span>거래하기
           </span>
         </div>
-        <div className="absolute w-full h-[30%] top-[72%] left-[50%] translate-x-[-50%] flex flex-col justify-center items-center ">
+        <div className="absolute w-full h-[30%] top-[70%] left-[50%] translate-x-[-50%] flex flex-col justify-center items-center ">
           <span className="mb-[20px] text-[#888888] text-lg">
             가입전 서비스를 둘러보고 싶다면?
           </span>
           <div
             onClick={handleNonLoginMain}
-            className="h-[55px] w-[80%] bg-[#ED2A70] rounded-[15px] flex justify-center items-center"
+            className="h-[20%] w-[80%] bg-[#ED2A70] rounded-[15px] flex justify-center items-center"
           >
             <span className=" text-[#DDDBE9] font-bold text-2xl cursor-pointer">
               잇다 둘러보기

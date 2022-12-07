@@ -7,6 +7,7 @@ import { ReactComponent as MsgIcon } from "./MsgIcon.svg";
 import { ReactComponent as EditIcon } from "./EditIcon.svg";
 import { ReactComponent as CameraIcon } from "./CameraIcon.svg";
 import { ReactComponent as CancelIcon } from "./CancelIcon.svg";
+import { ReactComponent as ArrowUpIcon } from "./ArrowUpIcon.svg";
 export {
   HomeIcon,
   ChatIcon,
@@ -17,4 +18,5 @@ export {
   EditIcon,
   CameraIcon,
   CancelIcon,
+  ArrowUpIcon,
 };
