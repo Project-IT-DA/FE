@@ -6,13 +6,7 @@ import PostInput from "../../elements/PostInput";
 import useMultiUploadImg from "../../hooks/useMultiUploadImg";
 
 const PostCreate = () => {
-  //img 업로드
-  //useMultiUploadImg 라는 커스텀 훅에서 base64 이미지 리스트와 이미지를 변환시켜주는 핸들러를 리턴해줍니다.
-  //파라미터에는 업로드 할수있는 사진수를 지정해줍니다.
   const [uploadImg, uploadImgHandler, onDeleteImg] = useMultiUploadImg(5);
-
-  //input에 대한 state 관리. 구조분해 할당으로 한번에 하고싶지만 타입지정때문에 너무 번거롭다..
-  //useRef를 이용해서 관리할까? 렌더링이 너무 많이 일어나는것 같다.
   const [categoryTg, setCategoryTg] = useState(false);
   const [content, setContent] = useState("");
 
