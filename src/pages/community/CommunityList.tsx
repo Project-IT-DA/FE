@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { MenuIcon, CommentIcon } from "../../assets/icons";
 
 function CommunityList() {
+  const navigate = useNavigate();
   return (
     <div className="border-b-8 border-t-8 border-[#D9D9D9]">
       <div className="w-full h-fit">
@@ -23,7 +25,12 @@ function CommunityList() {
             <p>내용입니다 내용내용내용...더보기 기능 붙일 예정</p>
           </div>
         </div>
-        <img src="https://picsum.photos/480/200" alt="image" />
+        <img
+          src="https://picsum.photos/480/200"
+          alt="image"
+          className="cursor-pointer"
+          onClick={() => navigate("/community/1")}
+        />
         <div className="px-8 h-[50px] flex items-center">
           <CommentIcon cursor="pointer" />
           <span className="pl-1 font-bold">32개</span>

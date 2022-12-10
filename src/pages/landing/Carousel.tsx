@@ -77,13 +77,14 @@ export function Carousel(props: {
   );
 }
 
-const StContainer = styled.div<{ num: number }>`
+export const StContainer = styled.div<{ num: number }>`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
   transform: translateX(-${props => props.num * 100}%);
   transition: transform 500ms ease-in-out;
+  position: relative;
 `;
 // function setNum(arg0: (num: any) => any) {
 //   throw new Error("Function not implemented.");
