@@ -1,18 +1,11 @@
-import React, {
-  useRef,
-  Dispatch,
-  SetStateAction,
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useRef, Fragment } from "react";
 import styled from "styled-components";
 
-export function Carousel(props: {
+const ImageCarousel = (props: {
   images: { id: number; src: string; alt?: string }[];
-  num: number;
-  setNum: Dispatch<SetStateAction<number>>;
-}) {
-  const { images, setNum, num } = props;
+}) => {
+  const { images } = props;
+  const [num, setNum] = useState<number>(0);
   const imageBox = useRef<HTMLDivElement>(null);
 
   const [isClick, setIsClick] = useState(false);
@@ -52,7 +45,7 @@ export function Carousel(props: {
   };
 
   return (
-    <div className="bg-[#dcdae8] overflow-hidden m-auto absolute">
+    <div className=" m-auto overflow-hidden relative">
       <StContainer
         ref={imageBox}
         num={num}
@@ -68,24 +61,36 @@ export function Carousel(props: {
               key={image.src}
               src={image.src}
               alt={image.alt}
-              className="w-full h-screen max-h-full flex-none"
+              className="flex-none"
             />
           );
         })}
       </StContainer>
+      <div className="flex w-[12%] absolute justify-evenly bottom-3 left-3">
+        {images.map(dot => {
+          return (
+            <div
+              className={`rounded-[50%] w-3 h-3 ${
+                num === dot.id ? "bg-[#ED2A70]" : "bg-white"
+              } cursor-pointer`}
+              onClick={() => {
+                setNum(dot.id);
+              }}
+              key={dot.id}
+            ></div>
+          );
+        })}
+      </div>
     </div>
   );
-}
+};
 
-export const StContainer = styled.div<{ num: number }>`
+export default ImageCarousel;
+
+const StContainer = styled.div<{ num: number }>`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 100%;
   transform: translateX(-${props => props.num * 100}%);
   transition: transform 500ms ease-in-out;
-  position: relative;
 `;
-// function setNum(arg0: (num: any) => any) {
-//   throw new Error("Function not implemented.");
-// }
