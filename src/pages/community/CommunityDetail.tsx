@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MenuIcon, CommentIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
-import images from "../../data/landingImages";
+import Comment from "../../components/Comment";
 import { productImages } from "../../data/productImages";
 
 function CommunityDetail() {
@@ -31,10 +31,13 @@ function CommunityDetail() {
       </div>
       <ImageCarousel images={productImages}></ImageCarousel>
 
-      <div className="px-8 h-[50px] flex items-center">
-        <CommentIcon cursor="pointer" />
-        <span className="pl-1 font-bold">32개</span>
+      <div className="px-[20px] flex items-center border-b h-[70px]">
+        <div className="flex items-center">
+          <CommentIcon cursor="pointer" />
+          <span className="font-bold ml-[10px]">32개</span>
+        </div>
       </div>
+      <Comment></Comment>
     </div>
   );
 }
