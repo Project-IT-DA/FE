@@ -9,6 +9,12 @@ const LandingLogin = () => {
     navigate("/post");
   };
 
+  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=http://localhost:3000/oauth/kakao/callback&response_type=code`;
+
+  const onKakaoLogin = () => {
+    window.location.href = kakaoURL;
+  };
+
   return (
     <>
       <div className="w-full h-full">
@@ -30,7 +36,10 @@ const LandingLogin = () => {
           </span>
         </div>
         <div className="absolute w-full h-[30%] top-[70%] left-[50%] translate-x-[-50%] flex flex-col justify-center items-center ">
-          <div className="h-[20%] w-[80%] bg-[#FBE950] mb-5 rounded-[15px] flex justify-center items-center cursor-pointer ">
+          <div
+            onClick={onKakaoLogin}
+            className="h-[20%] w-[80%] bg-[#FBE950] mb-5 rounded-[15px] flex justify-center items-center cursor-pointer "
+          >
             <KakaoIcon />
             <span className="font-bold text-lg mx-4 tracking-normal">
               카카오로 간편 로그인하기
