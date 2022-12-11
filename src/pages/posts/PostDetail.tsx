@@ -1,4 +1,6 @@
 import { HeartIcon, MsgIcon } from "../../assets/icons";
+import ImageCarousel from "../../components/ImageCarousel";
+import { productImages } from "../../data/productImages";
 
 const PostDetail = () => {
   return (
@@ -22,7 +24,9 @@ const PostDetail = () => {
       </div>
       {/* 위에꺼 컴포넌트 분리할것! */}
 
-      <div className="w-full h-[350px] bg-pink-300 flex overflow-x-scroll"></div>
+      <div className="w-full bg-pink-300 flex">
+        <ImageCarousel images={productImages} />
+      </div>
 
       <div className="flex justify-between mx-8 mt-4">
         <button className="bg-[#494949] text-white rounded-md px-6 py-2">
