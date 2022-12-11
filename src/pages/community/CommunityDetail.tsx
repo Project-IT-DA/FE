@@ -5,7 +5,6 @@ import Comment from "../../components/Comment";
 import { productImages } from "../../data/productImages";
 
 function CommunityDetail() {
-  const [num, setNum] = useState(0);
   return (
     <div className="w-full h-fit">
       <div className="flex justify-center mt-4 py-4 mx-4">

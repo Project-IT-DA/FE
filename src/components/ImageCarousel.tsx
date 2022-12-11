@@ -14,7 +14,8 @@ const ImageCarousel = (props: {
     onMouseMove,
     onTouchStart,
     onTouchEnd,
-  } = useSlideImage();
+    onTouchMove,
+  } = useSlideImage({ images });
 
   return (
     <div className=" m-auto overflow-hidden relative">
@@ -26,6 +27,7 @@ const ImageCarousel = (props: {
         onMouseMove={onMouseMove}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
+        onTouchMove={onTouchMove}
       >
         {images.map(image => {
           return (
