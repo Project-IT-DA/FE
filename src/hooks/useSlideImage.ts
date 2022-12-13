@@ -10,14 +10,12 @@ const useSlideImage = (props: {
   const [mouseDownClientX, setMouseDownClientX] = useState(0);
   const [mouseUpClientX, setMouseUpClientX] = useState(0);
   const [touchDownX, setTouchDownX] = useState(0);
-  const [touchUpX, setTouchUpX] = useState(0);
 
   const onMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     setMouseDownClientX(e.pageX);
   };
   const onMouseUp = () => {
     const imgX = mouseDownClientX - mouseUpClientX;
-
     if (imgX < -50 && num > 0) {
       setNum(num => num - 1);
     } else if (imgX > 50 && num < images.length - 1) {
@@ -30,19 +28,13 @@ const useSlideImage = (props: {
   };
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchDownX(e.changedTouches[0].pageX);
-    console.log("touchDownX : " + touchDownX);
   };
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchUpX(e.changedTouches[0].pageX);
-  };
-  const onTouchEnd = () => {
-    console.log("touchDownX : " + touchDownX);
-    console.log("touchUpX : " + touchUpX);
-    const distanceX = touchDownX - touchUpX;
-    console.log("distanceX : " + distanceX);
-    if (distanceX < -100 && num > 0) {
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const distanceX = touchDownX - e.changedTouches[0].pageX;
+    e.preventDefault();
+    if (distanceX < -70 && num > 0) {
       setNum(num => num - 1);
-    } else if (distanceX > 100 && num < images.length - 1) {
+    } else if (distanceX > 70 && num < images.length - 1) {
       setNum(num => num + 1);
     }
   };
@@ -54,7 +46,7 @@ const useSlideImage = (props: {
     onMouseUp,
     onMouseMove,
     onTouchStart,
-    onTouchMove,
+    // onTouchMove,
     onTouchEnd,
   };
 };

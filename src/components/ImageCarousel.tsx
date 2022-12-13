@@ -14,7 +14,6 @@ const ImageCarousel = (props: {
     onMouseMove,
     onTouchStart,
     onTouchEnd,
-    onTouchMove,
   } = useSlideImage({ images });
 
   return (
@@ -27,7 +26,6 @@ const ImageCarousel = (props: {
         onMouseMove={onMouseMove}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
-        onTouchMove={onTouchMove}
       >
         {images.map(image => {
           return (

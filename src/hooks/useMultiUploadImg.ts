@@ -39,7 +39,6 @@ const useMultiUploadImg = (NumOfPhoto: number) => {
 
   const onDeleteFile = (idx: number) => {
     const copy = imgBase64.filter((ib, i) => ib[i] !== ib[idx]);
-    console.log(copy);
     setImgBase64(copy);
   };
 

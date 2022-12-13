@@ -33,6 +33,7 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   outline: none;
+  touch-action: manipulation;
 }
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
