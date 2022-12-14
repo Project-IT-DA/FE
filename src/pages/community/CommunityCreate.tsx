@@ -16,7 +16,6 @@ const PostCreate = () => {
       content,
       title: "test",
     };
-    console.log(data);
   };
 
   return (
