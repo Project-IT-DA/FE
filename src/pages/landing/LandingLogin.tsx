@@ -9,7 +9,7 @@ const LandingLogin = () => {
     navigate("/post");
   };
 
-  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=http://localhost:3000/oauth/kakao/callback&response_type=code`;
+  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BASEURL}oauth/kakao/callback&response_type=code`;
 
   const onKakaoLogin = () => {
     window.location.href = kakaoURL;
