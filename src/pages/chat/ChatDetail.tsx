@@ -122,9 +122,11 @@ const ChatDetail = () => {
         <div className="flex border-black my-4 mx-4 border-[2px] focus-within:border-brandBlue">
           <input
             placeholder="메세지를 입력하세요"
-            className="text-base border-black text-gray-900  w-full h-12 px-3.5 py-2.5"
+            className="text-base border-black text-gray-900 w-full h-12 px-3.5 py-2.5"
           />
-          <button className="w-14 h-12 bg-[#ED2A70] ">Click</button>
+          <button className="w-14 bg-[#ED2A70] text-3xl text-white">
+            <p className="-rotate-45 pb-1">✈</p>
+          </button>
         </div>
       </div>
     </div>
