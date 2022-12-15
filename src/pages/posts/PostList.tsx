@@ -1,23 +1,18 @@
-import React from "react";
-import { HeartIcon } from "../../assets/icons";
+import { useState } from "react";
+import { HeartIcon, LineHeartIcon } from "../../assets/icons";
 import Search from "./Search";
 
 function PostList() {
+  const [isLiked, setIsLiked] = useState(true);
+
+  const onClick = () => {
+    setIsLiked(!isLiked);
+  };
+
   return (
-    <div className="mx-8 flex flex-col items-center justify-center">
-      {/* 버튼 분리 필요*/}
+    <div className="mx-5 flex flex-col items-center justify-center">
       <Search />
-      <div className="w-full flex mt-2 justify-end">
-        <label className="mr-2">
-          <input type="checkbox" />
-          거래완료 제외
-        </label>
-        <label className="">
-          <input type="checkbox" />
-          찜한 거래만
-        </label>
-      </div>
-      <div className="w-full h-32 mt-3 flex py-4 border-b">
+      <div className="w-full h-32 mt-3 flex p-4 border-2 rounded-lg">
         <div className="w-24 h-24 mr-[16px] bg-slate-400 rounded-md"></div>
         <div className="w-[calc(100%-6rem)] h-full">
           <p className="mb-1">집 팔기</p>
@@ -29,7 +24,11 @@ function PostList() {
               </div>
               <p className="font-extrabold text-lg">1,000원</p>
             </div>
-            <HeartIcon cursor="pointer" />
+            {!isLiked ? (
+              <LineHeartIcon cursor="pointer" onClick={onClick} />
+            ) : (
+              <HeartIcon cursor="pointer" onClick={onClick} />
+            )}
           </div>
         </div>
       </div>

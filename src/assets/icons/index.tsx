@@ -11,6 +11,7 @@ import { ReactComponent as ArrowUpIcon } from "./ArrowUpIcon.svg";
 import { ReactComponent as MenuIcon } from "./MenuIcon.svg";
 import { ReactComponent as CommentIcon } from "./CommentIcon.svg";
 import { ReactComponent as KakaoIcon } from "./KakaoIcon.svg";
+import { ReactComponent as LineHeartIcon } from "./LineHeartIcon.svg";
 
 export {
   HomeIcon,
@@ -26,4 +27,5 @@ export {
   MenuIcon,
   CommentIcon,
   KakaoIcon,
+  LineHeartIcon,
 };
