@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { ArrowUpIcon } from "../../assets/icons";
+import ArrowUpToggle from "../../elements/ArrowUpToggle";
 
 function Search() {
-  const [isClicked, setIsClicked] = useState(false);
-
-  const showCategory = () => {
-    setIsClicked(!isClicked);
-  };
+  const [categoryTg, setCategoryTg] = useState(false);
 
   return (
     <div className="w-full mt-[20px]">
@@ -16,26 +12,36 @@ function Search() {
           placeholder="상품 키워드 검색 (12자 이내)"
         />
       </div>
-      <div className="w-full h-fit">
-        <div className="flex justify-between py-3">
-          <p className="font-bold">카테고리</p>
-          <ArrowUpIcon
-            className="w-4 h-4"
-            onClick={showCategory}
-            cursor="pointer"
+      <div className="h-[24px] py-4 mt-2 flex items-center justify-between relative">
+        <div className="flex">
+          <button
+            className="px-4 text-md font-bold"
+            onClick={() => setCategoryTg(!categoryTg)}
+          >
+            카테고리
+          </button>
+          <ArrowUpToggle
+            categoryTg={categoryTg}
+            setCategoryTg={setCategoryTg}
           />
+          {categoryTg ? (
+            <div className="absolute top-10 left-2 w-[100px] border shadow-2xl bg-white">
+              <p>노트북</p>
+              <p>ㅋㅋㅋ</p>
+              <p>노트북</p>
+              <p>ㅋㅋㅋ</p>
+            </div>
+          ) : null}
         </div>
-        <div
-          className={`${
-            !isClicked ? "hidden" : "grid"
-          } grid-cols-3 grid-rows-2 gap-y-1.5 px-3 mb-3 text-center`}
-        >
-          <p>컴퓨터/노트북</p>
-          <p>태블릿/핸드폰</p>
-          <p>주변 기기</p>
-          <p>주요 부품</p>
-          <p>도서</p>
-          <p>기타</p>
+        <div className="pr-4 flex">
+          <label className="mr-2 cursor-pointer">
+            <input type="checkbox" />
+            거래완료 제외
+          </label>
+          <label className="cursor-pointer">
+            <input type="checkbox" />
+            찜한 거래만
+          </label>
         </div>
       </div>
     </div>
