@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MenuIcon, CommentIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
 import Comment from "../../components/Comment";
+import axios from "axios";
 import { productImages } from "../../data/productImages";
 
 function CommunityDetail() {
-  const [num, setNum] = useState(0);
+  const dataFetching = async () => {
+    const result = await axios.get("http://cheoljun.shop/api/v1/communities");
+    console.log(result);
+  };
+
+  useEffect(() => {
+    // dataFetching();
+  }, []);
+
   return (
     <div className="w-full h-fit">
       <div className="flex justify-center mt-4 py-4 mx-4">

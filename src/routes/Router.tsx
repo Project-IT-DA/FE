@@ -12,6 +12,7 @@ import ChatDetail from "../pages/chat/ChatDetail";
 import CommunityDetail from "../pages/community/CommunityDetail";
 import CommunityCreate from "../pages/community/CommunityCreate";
 import CommunityList from "../pages/community/CommunityList";
+import OAuthKakao from "../pages/oAuth/oAuthKakao";
 
 const Router = () => {
   return (
@@ -29,6 +30,7 @@ const Router = () => {
         <Route path="chat/:id" element={<ChatDetail />} />
         <Route path="/community/create" element={<CommunityCreate />} />
         <Route path="/community" element={<CommunityList />} />
+        <Route path="/oauth/kakao/callback/*" element={<OAuthKakao />} />
       </Routes>
       <FooterBar />
     </BrowserRouter>
