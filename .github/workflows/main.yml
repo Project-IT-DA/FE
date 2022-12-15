@@ -23,6 +23,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Generate Environment Variables File
+        run: |
+          echo "REACT_APP_API_BASEURL=${{secrets.REACT_APP_API_BASEURL}}" >> .env
+          echo REACT_APP_KAKAO_CLIENT_ID=${{secrets.REACT_APP_KAKAO_CLIENT_ID}} >>.env
+          echo REACT_APP_BASEURL=${{secrets.REACT_APP_BASEURL}} >>.env
+          cat .env
+
       - name: Install Dependencies
         run: yarn
 
