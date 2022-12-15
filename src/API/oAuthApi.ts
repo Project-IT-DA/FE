@@ -13,6 +13,17 @@ const oAuthApi = {
         window.location.href = "/post";
       });
   },
+  loginWithGoogle: async (googleToken: string) => {
+    return await instance
+      .get(`users/login/kakao?code=${googleToken}`)
+      .then(data => {
+        setAccessToken(data.headers.authorization);
+        console.log(data);
+      })
+      .then(() => {
+        window.location.href = "/post";
+      });
+  },
 };
 
 export default oAuthApi;
