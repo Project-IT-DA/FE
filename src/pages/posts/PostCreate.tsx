@@ -101,6 +101,7 @@ const PostCreate = () => {
         <input
           type="number"
           value={price}
+          step={1000}
           onChange={e => setPrice(e.target.value)}
           className="w-full mx-6 px-4 placeholder-black bg-[#DDDBE9] h-12 rounded-sm"
           placeholder="가격(1억원이하)"
