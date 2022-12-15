@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+
+import { getCookieToken } from "./cookies";
 
 export const instance = axios.create({
   withCredentials: true,
@@ -9,3 +11,16 @@ export const instance = axios.create({
     "Access-Control-Allow-Origin": "*",
   },
 });
+instance.interceptors.request.use(
+  (config: AxiosRequestConfig) => {
+    const token = getCookieToken();
+    if (token) {
+      config.headers = { authorization: token };
+      return config;
+    }
+    return config;
+  },
+  () => {
+    return;
+  },
+);
