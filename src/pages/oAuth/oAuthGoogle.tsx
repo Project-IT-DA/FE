@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import oAuthApi from "../../API/oAuthApi";
-
+//google login
 const OAuthGoogle = () => {
   const googleToken = new URL(window.location.href).searchParams.get("code");
 
