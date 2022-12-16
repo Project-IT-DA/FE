@@ -1,15 +1,21 @@
-import React, { useState, useRef, Dispatch, SetStateAction } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { nums } from "../store/carouselState";
 
 const useSlideImage = (props: {
   images: { id: number; src: string; alt?: string }[];
 }) => {
   const { images } = props;
-  const [num, setNum] = useState<number>(0);
+  const [num, setNum] = useRecoilState<number>(nums);
   const imageBox = useRef<HTMLDivElement>(null);
 
   const [mouseDownClientX, setMouseDownClientX] = useState(0);
   const [mouseUpClientX, setMouseUpClientX] = useState(0);
   const [touchDownX, setTouchDownX] = useState(0);
+
+  useEffect(() => {
+    setNum(0);
+  }, []);
 
   const onMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     setMouseDownClientX(e.pageX);
@@ -48,6 +54,7 @@ const useSlideImage = (props: {
     onTouchStart,
     // onTouchMove,
     onTouchEnd,
+    nums,
   };
 };
 

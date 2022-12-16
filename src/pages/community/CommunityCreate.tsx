@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { CameraIcon, CancelIcon } from "../../assets/icons";
 import ArrowUpToggle from "../../elements/ArrowUpToggle";
-import NanumToggle from "../../elements/NanumToggle";
-import PostInput from "../../elements/PostInput";
 import useMultiUploadImg from "../../hooks/useMultiUploadImg";
 
 const PostCreate = () => {

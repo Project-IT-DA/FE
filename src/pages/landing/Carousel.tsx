@@ -18,6 +18,7 @@ export function Carousel(props: {
     onTouchStart,
     onTouchEnd,
   } = useSlideImage({ images });
+
   return (
     <div className="bg-[#dcdae8] overflow-hidden m-auto absolute">
       <StContainer

@@ -5,9 +5,11 @@ import images from "../../data/landingImages";
 import LandingHeader from "./LandingHeader";
 import Arrow from "../../elements/Arrow";
 import StartButton from "../../elements/StartButton";
+import { useRecoilState } from "recoil";
+import { nums } from "../../store/carouselState";
 
 const Landing = () => {
-  const [num, setNum] = useState<number>(0);
+  const [num, setNum] = useRecoilState<number>(nums);
   const navigate = useNavigate();
   const onMoveLoginPage = () => {
     navigate("/login");
