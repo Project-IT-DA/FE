@@ -15,7 +15,7 @@ const oAuthApi = {
   },
   loginWithGoogle: async (googleToken: string) => {
     return await instance
-      .get(`users/login/kakao?code=${googleToken}`)
+      .get(`users/login/google?code=${googleToken}`)
       .then(data => {
         setAccessToken(data.headers.authorization);
         console.log(data);

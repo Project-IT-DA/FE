@@ -11,8 +11,14 @@ const LandingLogin = () => {
 
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BASEURL}oauth/kakao/callback&response_type=code`;
 
+  const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_BASEURL}oauth/google/callback&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email&response_type=code`;
+
   const onKakaoLogin = () => {
     window.location.href = kakaoURL;
+  };
+
+  const onGoogleLogin = () => {
+    window.location.href = googleURL;
   };
 
   return (
@@ -43,6 +49,14 @@ const LandingLogin = () => {
             <KakaoIcon />
             <span className="font-bold text-lg mx-4 tracking-normal">
               카카오로 간편 로그인하기
+            </span>
+          </div>
+          <div
+            onClick={onGoogleLogin}
+            className="h-[20%] w-[80%] bg-[#fefefe] mb-5 rounded-[15px] flex justify-center items-center cursor-pointer "
+          >
+            <span className="font-bold text-lg mx-4 tracking-normal">
+              구글로 간편 로그인하기
             </span>
           </div>
 

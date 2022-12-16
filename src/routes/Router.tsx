@@ -13,6 +13,7 @@ import CommunityDetail from "../pages/community/CommunityDetail";
 import CommunityCreate from "../pages/community/CommunityCreate";
 import CommunityList from "../pages/community/CommunityList";
 import OAuthKakao from "../pages/oAuth/oAuthKakao";
+import OAuthGoogle from "../pages/oAuth/oAuthGoogle";
 
 const Router = () => {
   return (
@@ -31,6 +32,7 @@ const Router = () => {
         <Route path="/community/create" element={<CommunityCreate />} />
         <Route path="/community" element={<CommunityList />} />
         <Route path="/oauth/kakao/callback/*" element={<OAuthKakao />} />
+        <Route path="/oauth/google/callback/*" element={<OAuthGoogle />} />
       </Routes>
       <FooterBar />
     </BrowserRouter>

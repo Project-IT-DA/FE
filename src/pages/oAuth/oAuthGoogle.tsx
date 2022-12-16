@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import oAuthApi from "../../API/oAuthApi";
-
-const oAuthGoogle = () => {
+//google login
+const OAuthGoogle = () => {
   const googleToken = new URL(window.location.href).searchParams.get("code");
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const oAuthGoogle = () => {
   );
 };
 
-export default oAuthGoogle;
+export default OAuthGoogle;
