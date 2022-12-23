@@ -6,8 +6,7 @@ const oAuthApi = {
     return await instance
       .get(`users/login/kakao?code=${kakaoToken}`)
       .then(data => {
-        setAccessToken(data.headers.authorization);
-        console.log(data);
+        setAccessToken(data.headers.authorization?.replace("BEARER ", ""));
       })
       .then(() => {
         window.location.href = "/post";

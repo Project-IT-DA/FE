@@ -15,7 +15,7 @@ instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const token = getCookieToken();
     if (token) {
-      config.headers = { authorization: token };
+      config.headers = { authorization: `BEARER ${token}` };
       return config;
     }
     return config;
