@@ -2,19 +2,6 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { formDataInstance, instance } from "../config/axios";
 import { IAricleInfo } from "../types/articleType";
 
-interface IPostArticle {
-  articleName: string;
-  category: string;
-  location: string;
-  sellPrice: number;
-  substance: string;
-}
-
-interface Ipost {
-  data: IPostArticle;
-  file?: File;
-}
-
 export const articleApi = {
   getArticleDetail: (articleId: number) => {
     return useQuery<IAricleInfo>(["article"], async () => {

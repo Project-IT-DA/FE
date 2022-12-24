@@ -38,9 +38,6 @@ const PostCreate = () => {
 
     formdata.append("data", blob);
     console.log(formdata);
-    //     { "articleName": "맥북에어 17인치 판매합니다", "category": "PC", "location": "서울시 강남구", "sellPrice": 400000, "substance": "맥북프로 깨끗하게 썻어용" }
-    //     data:
-    // {"articleName":"물건팝니다","category":"PC","location":"서울시 강남구","sellPrice":12,"substance":"팔아오"}
 
     postArticle(formdata);
   };
