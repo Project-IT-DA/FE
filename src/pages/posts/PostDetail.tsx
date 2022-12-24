@@ -1,8 +1,15 @@
+import { useParams } from "react-router-dom";
+import { articleApi } from "../../API/articleApi";
 import { HeartIcon, MsgIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
 import { productImages } from "../../data/productImages";
 
 const PostDetail = () => {
+  const { id } = useParams();
+  const { data } = articleApi.getArticleDetail(Number(id));
+
+  console.log(data);
+
   return (
     <div className="w-full  mb-[100px]">
       <div className="mx-8 my-4 pb-4 border-b">
