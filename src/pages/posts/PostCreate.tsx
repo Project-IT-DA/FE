@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { articleApi } from "../../API/articleApi";
 import { CameraIcon, CancelIcon } from "../../assets/icons";
 import ArrowUpToggle from "../../elements/ArrowUpToggle";
 import NanumToggle from "../../elements/NanumToggle";
@@ -19,17 +20,29 @@ const PostCreate = () => {
   const [location, setLocation] = useState("");
   const [content, setContent] = useState("");
 
+  const { mutateAsync: postArticle } = articleApi.postArticle();
+
   const onPost = () => {
     // if (title === "" || price === "" || location === "" || content === "")
     //   return;
-    const data = {
+    const formdata = new FormData();
+
+    const value = {
       articleName: title,
-      category: "pc",
+      category: "PC",
       location: location,
       sellPrice: price,
       substance: content,
     };
-    console.log(data);
+    const blob = JSON.stringify(value);
+
+    formdata.append("data", blob);
+    console.log(formdata);
+    //     { "articleName": "맥북에어 17인치 판매합니다", "category": "PC", "location": "서울시 강남구", "sellPrice": 400000, "substance": "맥북프로 깨끗하게 썻어용" }
+    //     data:
+    // {"articleName":"물건팝니다","category":"PC","location":"서울시 강남구","sellPrice":12,"substance":"팔아오"}
+
+    postArticle(formdata);
   };
 
   return (

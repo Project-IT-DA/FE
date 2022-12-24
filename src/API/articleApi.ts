@@ -1,6 +1,19 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { instance } from "../config/axios";
+import { formDataInstance, instance } from "../config/axios";
 import { IAricleInfo } from "../types/articleType";
+
+interface IPostArticle {
+  articleName: string;
+  category: string;
+  location: string;
+  sellPrice: number;
+  substance: string;
+}
+
+interface Ipost {
+  data: IPostArticle;
+  file?: File;
+}
 
 export const articleApi = {
   getArticleDetail: (articleId: number) => {
@@ -10,9 +23,9 @@ export const articleApi = {
     });
   },
   postArticle: () => {
-    return useMutation(async () => {
-      const { data } = await instance.post(``);
-      //폼데이터형식으로 보내야됨.
+    return useMutation(async (payload: FormData) => {
+      const { data } = await formDataInstance.post("api/articles", payload);
+      return data;
     });
   },
 };
