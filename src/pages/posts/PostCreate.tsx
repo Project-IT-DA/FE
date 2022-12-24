@@ -19,10 +19,18 @@ const PostCreate = () => {
   const [location, setLocation] = useState("");
   const [content, setContent] = useState("");
 
-  // const onPost = () => {
-  //   if (title === "" || price === "" || location === "" || content === "")
-  //     return;
-  // };
+  const onPost = () => {
+    // if (title === "" || price === "" || location === "" || content === "")
+    //   return;
+    const data = {
+      articleName: title,
+      category: "pc",
+      location: location,
+      sellPrice: price,
+      substance: content,
+    };
+    console.log(data);
+  };
 
   return (
     <div className="w-full mb-[100px]">
@@ -132,7 +140,10 @@ const PostCreate = () => {
         <button className="bg-[#9D9D9D] text-white py-4 rounded-md">
           취소
         </button>
-        <button className="bg-[#ED2A70] text-white py-4 rounded-md">
+        <button
+          className="bg-[#ED2A70] text-white py-4 rounded-md"
+          onClick={onPost}
+        >
           등록
         </button>
       </div>
