@@ -5,8 +5,7 @@ type onDeleteType = (idx: number) => void;
 
 const useMultiUploadImg = (NumOfPhoto: number) => {
   const [imgBase64, setImgBase64] = useState<string[]>([]);
-  const imagestate = useState<FileList | null | undefined>();
-  const setImgFile = imagestate[1];
+  const [imgFile, setImgFile] = useState<FileList | null | undefined>();
 
   const handleChangeFile = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,10 +41,11 @@ const useMultiUploadImg = (NumOfPhoto: number) => {
     setImgBase64(copy);
   };
 
-  return [imgBase64, handleChangeFile, onDeleteFile] as [
+  return [imgBase64, handleChangeFile, onDeleteFile, imgFile] as [
     string[],
     onChangeType,
     onDeleteType,
+    FileList,
   ];
 };
 

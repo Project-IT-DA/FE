@@ -15,7 +15,30 @@ instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const token = getCookieToken();
     if (token) {
-      config.headers = { authorization: token };
+      config.headers = { authorization: `BEARER ${token}` };
+      return config;
+    }
+    return config;
+  },
+  () => {
+    return;
+  },
+);
+
+export const formDataInstance = axios.create({
+  withCredentials: true,
+  baseURL: process.env.REACT_APP_API_BASEURL,
+  headers: {
+    "Content-Type": "multipart/form-data",
+    "Access-Control-Allow-Origin": "*",
+  },
+});
+
+formDataInstance.interceptors.request.use(
+  (config: AxiosRequestConfig) => {
+    const token = getCookieToken();
+    if (token) {
+      config.headers = { authorization: `BEARER ${token}` };
       return config;
     }
     return config;

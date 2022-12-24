@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { articleApi } from "../../API/articleApi";
 import { CameraIcon, CancelIcon } from "../../assets/icons";
 import ArrowUpToggle from "../../elements/ArrowUpToggle";
 import NanumToggle from "../../elements/NanumToggle";
@@ -9,7 +11,8 @@ const PostCreate = () => {
   //img 업로드
   //useMultiUploadImg 라는 커스텀 훅에서 base64 이미지 리스트와 이미지를 변환시켜주는 핸들러를 리턴해줍니다.
   //파라미터에는 업로드 할수있는 사진수를 지정해줍니다.
-  const [uploadImg, uploadImgHandler, onDeleteImg] = useMultiUploadImg(5);
+  const [uploadImg, uploadImgHandler, onDeleteImg, imgFile] =
+    useMultiUploadImg(5);
 
   //input에 대한 state 관리. 구조분해 할당으로 한번에 하고싶지만 타입지정때문에 너무 번거롭다..
   //useRef를 이용해서 관리할까? 렌더링이 너무 많이 일어나는것 같다.
@@ -19,10 +22,33 @@ const PostCreate = () => {
   const [location, setLocation] = useState("");
   const [content, setContent] = useState("");
 
-  // const onPost = () => {
-  //   if (title === "" || price === "" || location === "" || content === "")
-  //     return;
-  // };
+  const { mutateAsync: postArticle } = articleApi.postArticle();
+  const navigate = useNavigate();
+
+  const onPost = () => {
+    // if (title === "" || price === "" || location === "" || content === "")
+    //   return;
+    const formdata = new FormData();
+
+    const value = {
+      articleName: title,
+      category: "PC",
+      location: location,
+      sellPrice: price,
+      substance: content,
+    };
+    const blob = JSON.stringify(value);
+
+    formdata.append("data", blob);
+    for (const file of Array.from(imgFile)) {
+      formdata.append("file", file);
+    }
+    //filelist는 유사배열 객체이기때문에 Array.from을 써서 배열형식으로 변환.
+
+    postArticle(formdata).then(() => {
+      navigate("/post");
+    });
+  };
 
   return (
     <div className="w-full mb-[100px]">
@@ -132,7 +158,10 @@ const PostCreate = () => {
         <button className="bg-[#9D9D9D] text-white py-4 rounded-md">
           취소
         </button>
-        <button className="bg-[#ED2A70] text-white py-4 rounded-md">
+        <button
+          className="bg-[#ED2A70] text-white py-4 rounded-md"
+          onClick={onPost}
+        >
           등록
         </button>
       </div>
