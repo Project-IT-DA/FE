@@ -1,14 +1,31 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { articleApi } from "../../API/articleApi";
 import { HeartIcon, MsgIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
 import { productImages } from "../../data/productImages";
 
+interface IImg {
+  id: number;
+  src: string;
+  alt: string;
+}
+
 const PostDetail = () => {
   const { id } = useParams();
-  const { data: article } = articleApi.getArticleDetail(Number(id));
+  const { data: article, isSuccess } = articleApi.getArticleDetail(Number(id));
+  const [imgs, setImgs] = useState<IImg[]>([]);
 
-  console.log(article);
+  useEffect(() => {
+    if (isSuccess && imgs.length === 0) {
+      for (let i = 0; i < article.fileUrl.length; i++) {
+        setImgs(img => [
+          ...img,
+          { id: i, src: article.fileUrl[i], alt: article.fileName[i] },
+        ]);
+      }
+    }
+  }, [isSuccess]);
 
   return (
     <div className="w-full  mb-[100px]">
@@ -33,7 +50,7 @@ const PostDetail = () => {
       {/* 위에꺼 컴포넌트 분리할것! */}
 
       <div className="w-full bg-pink-300 flex">
-        <ImageCarousel images={productImages} />
+        <ImageCarousel images={imgs} />
       </div>
 
       <div className="flex justify-between mx-8 mt-4">
