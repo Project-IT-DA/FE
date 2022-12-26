@@ -3,13 +3,7 @@ import { useParams } from "react-router-dom";
 import { articleApi } from "../../API/articleApi";
 import { HeartIcon, MsgIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
-import { productImages } from "../../data/productImages";
-
-interface IImg {
-  id: number;
-  src: string;
-  alt: string;
-}
+import { IImg } from "../../types/ImgType";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -54,9 +48,9 @@ const PostDetail = () => {
       </div>
 
       <div className="flex justify-between mx-8 mt-4">
-        <button className="bg-[#494949] text-white rounded-md px-6 py-2">
+        <p className="bg-[#494949] text-white rounded-md px-6 py-2">
           {article?.status === "SELL" ? "거래완료" : "거래중"}
-        </button>
+        </p>
         <div className="grid grid-cols-2 gap-3">
           <span className="flex ">
             <HeartIcon className="mr-2" /> 20
@@ -78,7 +72,7 @@ const PostDetail = () => {
           <p>{article?.substance}</p>
         </div>
       </div>
-      <div className="w-[90%] h-[300px] mx-auto bg-green-400 p-5">맵</div>
+      {/* <div className="w-[90%] h-[300px] mx-auto bg-green-400 p-5">맵</div> */}
     </div>
   );
 };

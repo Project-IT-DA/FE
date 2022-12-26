@@ -16,7 +16,7 @@ const oAuthApi = {
     return await instance
       .get(`users/login/google?code=${googleToken}`)
       .then(data => {
-        setAccessToken(data.headers.authorization);
+        setAccessToken(data.headers.authorization?.replace("BEARER ", ""));
         console.log(data);
       })
       .then(() => {
