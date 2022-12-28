@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { articleApi } from "../../API/articleApi";
@@ -10,7 +11,10 @@ const PostDetail = () => {
   const { data: article, isSuccess } = articleApi.getArticleDetail(Number(id));
   const [imgs, setImgs] = useState<IImg[]>([]);
   const { mutateAsync: deleteArticle } = articleApi.deleteArticle();
+  const { mutateAsync: bookmarkArticle } = articleApi.bookmarkArticle();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
   useEffect(() => {
     if (isSuccess && imgs.length === 0) {
       for (let i = 0; i < article.fileUrl.length; i++) {
@@ -24,6 +28,12 @@ const PostDetail = () => {
 
   const onDeletePost = () => {
     deleteArticle(Number(id)).then(() => navigate("/post"));
+  };
+
+  const onBookmarkPost = () => {
+    bookmarkArticle(Number(id)).then(() =>
+      queryClient.invalidateQueries(["article"]),
+    );
   };
 
   return (
@@ -62,11 +72,8 @@ const PostDetail = () => {
           {article?.status === "SELL" ? "거래완료" : "거래중"}
         </p>
         <div className="grid grid-cols-2 gap-3">
-          <span className="flex ">
-            <HeartIcon className="mr-2" /> 20
-          </span>
-          <span className="flex">
-            <MsgIcon className="mr-2" /> 30
+          <span className="flex " onClick={onBookmarkPost}>
+            <HeartIcon className="mr-2" /> {article?.like ? "찜" : "안찜"}
           </span>
         </div>
       </div>

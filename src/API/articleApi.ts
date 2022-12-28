@@ -21,4 +21,13 @@ export const articleApi = {
       return data;
     });
   },
+  bookmarkArticle: () => {
+    return useMutation(async (articleId: number) => {
+      const { data } = await instance.post(
+        `api/articles/${articleId}/like`,
+        {},
+      );
+      return data;
+    });
+  },
 };
