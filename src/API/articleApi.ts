@@ -30,4 +30,13 @@ export const articleApi = {
       return data;
     });
   },
+  soldStatusArticle: () => {
+    return useMutation(async (articleId: number) => {
+      const { data } = await instance.post(
+        `api/articles/${articleId}/sell`,
+        {},
+      );
+      return data;
+    });
+  },
 };

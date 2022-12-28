@@ -12,6 +12,7 @@ const PostDetail = () => {
   const [imgs, setImgs] = useState<IImg[]>([]);
   const { mutateAsync: deleteArticle } = articleApi.deleteArticle();
   const { mutateAsync: bookmarkArticle } = articleApi.bookmarkArticle();
+  const { mutateAsync: changeSoldStatus } = articleApi.soldStatusArticle();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -36,6 +37,12 @@ const PostDetail = () => {
     );
   };
 
+  const onChangeSoldStatus = () => {
+    changeSoldStatus(Number(id)).then(() =>
+      queryClient.invalidateQueries(["article"]),
+    );
+  };
+
   return (
     <div className="w-full  mb-[100px]">
       <div className="mx-8 my-4 pb-4 border-b relative">
@@ -54,6 +61,11 @@ const PostDetail = () => {
             <div className="absolute top-0 right-0">
               <button className="text-red-500" onClick={onDeletePost}>
                 삭제
+              </button>
+              <button className="text-green-500" onClick={onChangeSoldStatus}>
+                {article?.status === "SELL"
+                  ? "거래중으로 변경"
+                  : "판매중으로 변경"}
               </button>
             </div>
           </div>
