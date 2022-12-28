@@ -15,4 +15,10 @@ export const articleApi = {
       return data;
     });
   },
+  deleteArticle: () => {
+    return useMutation(async (articleId: number) => {
+      const { data } = await instance.delete(`api/articles/${articleId}`);
+      return data;
+    });
+  },
 };

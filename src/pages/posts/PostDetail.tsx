@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { articleApi } from "../../API/articleApi";
 import { HeartIcon, MsgIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
@@ -9,7 +9,8 @@ const PostDetail = () => {
   const { id } = useParams();
   const { data: article, isSuccess } = articleApi.getArticleDetail(Number(id));
   const [imgs, setImgs] = useState<IImg[]>([]);
-
+  const { mutateAsync: deleteArticle } = articleApi.deleteArticle();
+  const navigate = useNavigate();
   useEffect(() => {
     if (isSuccess && imgs.length === 0) {
       for (let i = 0; i < article.fileUrl.length; i++) {
@@ -21,9 +22,13 @@ const PostDetail = () => {
     }
   }, [isSuccess]);
 
+  const onDeletePost = () => {
+    deleteArticle(Number(id)).then(() => navigate("/post"));
+  };
+
   return (
     <div className="w-full  mb-[100px]">
-      <div className="mx-8 my-4 pb-4 border-b">
+      <div className="mx-8 my-4 pb-4 border-b relative">
         <h3 className="font-bold text-lg">{article?.articleName}</h3>
         <div className="flex mt-3 justify-between">
           <div className="flex">
@@ -35,6 +40,11 @@ const PostDetail = () => {
               {/* username */}
               <p className="font-bold">{article?.username}</p>
               <p>잇다농도: {article?.density}%</p>
+            </div>
+            <div className="absolute top-0 right-0">
+              <button className="text-red-500" onClick={onDeletePost}>
+                삭제
+              </button>
             </div>
           </div>
 
