@@ -15,4 +15,28 @@ export const articleApi = {
       return data;
     });
   },
+  deleteArticle: () => {
+    return useMutation(async (articleId: number) => {
+      const { data } = await instance.delete(`api/articles/${articleId}`);
+      return data;
+    });
+  },
+  bookmarkArticle: () => {
+    return useMutation(async (articleId: number) => {
+      const { data } = await instance.post(
+        `api/articles/${articleId}/like`,
+        {},
+      );
+      return data;
+    });
+  },
+  soldStatusArticle: () => {
+    return useMutation(async (articleId: number) => {
+      const { data } = await instance.post(
+        `api/articles/${articleId}/sell`,
+        {},
+      );
+      return data;
+    });
+  },
 };
