@@ -70,10 +70,11 @@ const PostDetail = () => {
             </div>
           </div>
 
-          <p className="pt-5">등록일: 2022-11-22</p>
+          <p className="pt-5">등록일: {article?.createdAt}</p>
+          {/* FIXME: 날짜값 변경하기 */}
         </div>
       </div>
-      {/* 위에꺼 컴포넌트 분리할것! */}
+      {/* TODO: 위에꺼 컴포넌트 분리할것! */}
 
       <div className="w-full bg-pink-300 flex">
         <ImageCarousel images={imgs} />
