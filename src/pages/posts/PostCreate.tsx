@@ -21,9 +21,10 @@ const PostCreate = () => {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [content, setContent] = useState("");
-
+  const [nanumTg, setNanumTg] = useState(true);
   const { mutateAsync: postArticle } = articleApi.postArticle();
   const navigate = useNavigate();
+  //가격이 0원이 아니면 나눔토글 false;
 
   const onPost = () => {
     // if (title === "" || price === "" || location === "" || content === "")
@@ -127,15 +128,23 @@ const PostCreate = () => {
         <input
           type="number"
           value={price}
+          min={0}
           step={1000}
-          onChange={e => setPrice(e.target.value)}
+          onChange={e => {
+            setPrice(e.target.value);
+            if (+price === 0) {
+              setNanumTg(true);
+            } else if (+price > 0) {
+              setNanumTg(false);
+            }
+          }}
           className="w-full mx-6 px-4 placeholder-black bg-[#DDDBE9] h-12 rounded-sm"
           placeholder="가격(1억원이하)"
         />
       </div>
 
       <div className="flex justify-end mr-6">
-        <NanumToggle />
+        <NanumToggle tg={nanumTg} setTg={setNanumTg} />
       </div>
       <PostInput
         placeholder="직거래 위치(20자 이하)"

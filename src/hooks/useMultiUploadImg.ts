@@ -11,13 +11,13 @@ const useMultiUploadImg = (NumOfPhoto: number) => {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const fileArr = event.target.files;
 
-      setImgFile(fileArr);
       setImgBase64([]);
       if (fileArr) {
         if (fileArr?.length > NumOfPhoto) {
           alert(`사진은 ${NumOfPhoto}장 까지입니다.`);
           return;
         }
+        setImgFile(fileArr);
         for (let i = 0; i < fileArr.length; i++) {
           if (fileArr[i]) {
             const reader = new FileReader();

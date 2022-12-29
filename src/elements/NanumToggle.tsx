@@ -1,8 +1,7 @@
 import { useState } from "react";
+import { IBooleanProps } from "../types/booleanPropType";
 
-const NanumToggle = () => {
-  const [tg, setTg] = useState(false);
-
+const NanumToggle = ({ tg, setTg }: IBooleanProps) => {
   return (
     <div>
       <label className="inline-flex relative items-center cursor-pointer">
