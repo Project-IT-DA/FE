@@ -5,6 +5,7 @@ import { articleApi } from "../../API/articleApi";
 import { HeartIcon, MsgIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
 import { IImg } from "../../types/ImgType";
+import PostCreate from "./PostCreate";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -45,6 +46,9 @@ const PostDetail = () => {
 
   return (
     <div className="w-full  mb-[100px]">
+      {/* <div className="absolute top-14 z-50 w-full bg-white h-full">
+        <PostCreate />
+      </div> */}
       <div className="mx-8 my-4 pb-4 border-b relative">
         <h3 className="font-bold text-lg">{article?.articleName}</h3>
         <div className="flex mt-3 justify-between">
@@ -53,6 +57,7 @@ const PostDetail = () => {
               src={`https://avatars.githubusercontent.com/u/108189281?v=4`}
               className="w-10 h-10 rounded-full mx-2"
             />
+
             <div>
               {/* username */}
               <p className="font-bold">{article?.username}</p>
