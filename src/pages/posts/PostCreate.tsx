@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { articleApi } from "../../API/articleApi";
 import { CameraIcon, CancelIcon } from "../../assets/icons";
@@ -7,7 +7,25 @@ import NanumToggle from "../../elements/NanumToggle";
 import PostInput from "../../elements/PostInput";
 import useMultiUploadImg from "../../hooks/useMultiUploadImg";
 
-const PostCreate = () => {
+interface IAricleInfo {
+  userId: number;
+  username: string;
+  density: number;
+  articleId: number;
+  articleName: string;
+  substance: string;
+  category: string;
+  status: string;
+  location: string;
+  createdAt: string;
+  updatedAt: string;
+  sellPrice: number;
+  fileName: string;
+  fileUrl: string;
+  like: boolean;
+}
+
+const PostCreate = ({ article }: { article?: IAricleInfo }) => {
   //img 업로드
   //useMultiUploadImg 라는 커스텀 훅에서 base64 이미지 리스트와 이미지를 변환시켜주는 핸들러를 리턴해줍니다.
   //파라미터에는 업로드 할수있는 사진수를 지정해줍니다.
@@ -25,6 +43,8 @@ const PostCreate = () => {
   const { mutateAsync: postArticle } = articleApi.postArticle();
   const navigate = useNavigate();
   //가격이 0원이 아니면 나눔토글 false;
+
+  const { mutateAsync: editArticle } = articleApi.editArticle();
 
   const onPost = () => {
     // if (title === "" || price === "" || location === "" || content === "")
@@ -46,15 +66,36 @@ const PostCreate = () => {
     }
     //filelist는 유사배열 객체이기때문에 Array.from을 써서 배열형식으로 변환.
 
-    postArticle(formdata).then(() => {
-      navigate("/post");
-    });
+    const editPayload = {
+      articleId: article?.articleId,
+      formdata: formdata,
+    };
+    if (article) {
+      editArticle(editPayload).then(() => {
+        navigate("/post");
+      });
+    } else {
+      postArticle(formdata).then(() => {
+        navigate("/post");
+      });
+    }
   };
+
+  useEffect(() => {
+    if (article) {
+      setTitle(article.articleName);
+      setContent(article.substance);
+      setLocation(article.location);
+      setPrice(String(article.sellPrice));
+    }
+  }, []);
 
   return (
     <div className="w-full mb-[100px]">
       <div className="flex justify-center mt-4 py-4 border-y mx-4">
-        <h1 className="text-xl font-bold text-center">거래글 작성하기</h1>
+        <h1 className="text-xl font-bold text-center">
+          거래글 {article ? "수정" : "작성"}하기
+        </h1>
       </div>
       <div className="py-4 border-b mx-4 flex relative">
         <button

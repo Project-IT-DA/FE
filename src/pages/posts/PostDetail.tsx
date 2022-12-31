@@ -16,6 +16,7 @@ const PostDetail = () => {
   const { mutateAsync: changeSoldStatus } = articleApi.soldStatusArticle();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const [editTg, setEditTg] = useState(false);
 
   useEffect(() => {
     if (isSuccess && imgs.length === 0) {
@@ -46,9 +47,12 @@ const PostDetail = () => {
 
   return (
     <div className="w-full  mb-[100px]">
-      {/* <div className="absolute top-14 z-50 w-full bg-white h-full">
-        <PostCreate />
-      </div> */}
+      {editTg === true ? (
+        <div className="absolute top-14 z-40 w-full bg-white h-full">
+          <PostCreate article={article} />
+        </div>
+      ) : null}
+
       <div className="mx-8 my-4 pb-4 border-b relative">
         <h3 className="font-bold text-lg">{article?.articleName}</h3>
         <div className="flex mt-3 justify-between">
@@ -66,6 +70,9 @@ const PostDetail = () => {
             <div className="absolute top-0 right-0">
               <button className="text-red-500" onClick={onDeletePost}>
                 삭제
+              </button>
+              <button className="text-blue-500" onClick={() => setEditTg(true)}>
+                편집
               </button>
               <button className="text-green-500" onClick={onChangeSoldStatus}>
                 {article?.status === "SELL"
