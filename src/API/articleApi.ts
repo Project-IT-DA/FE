@@ -2,6 +2,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { formDataInstance, instance } from "../config/axios";
 import { IAricleInfo } from "../types/articleType";
 
+interface IEditPayload {
+  articleId: number | undefined;
+  formdata: FormData;
+}
+
 export const articleApi = {
   getArticleDetail: (articleId: number) => {
     return useQuery<IAricleInfo>(["article"], async () => {
@@ -37,6 +42,17 @@ export const articleApi = {
         {},
       );
       return data;
+    });
+  },
+  editArticle: () => {
+    return useMutation(async (payload: IEditPayload) => {
+      {
+        const { data } = await formDataInstance.put(
+          `api/articles/${payload.articleId}`,
+          payload.formdata,
+        );
+        return data;
+      }
     });
   },
 };

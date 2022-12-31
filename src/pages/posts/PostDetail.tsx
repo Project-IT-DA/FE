@@ -5,6 +5,7 @@ import { articleApi } from "../../API/articleApi";
 import { HeartIcon, MsgIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
 import { IImg } from "../../types/ImgType";
+import PostCreate from "./PostCreate";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -15,6 +16,7 @@ const PostDetail = () => {
   const { mutateAsync: changeSoldStatus } = articleApi.soldStatusArticle();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const [editTg, setEditTg] = useState(false);
 
   useEffect(() => {
     if (isSuccess && imgs.length === 0) {
@@ -45,6 +47,12 @@ const PostDetail = () => {
 
   return (
     <div className="w-full  mb-[100px]">
+      {editTg === true ? (
+        <div className="absolute top-14 z-40 w-full bg-white h-full">
+          <PostCreate article={article} />
+        </div>
+      ) : null}
+
       <div className="mx-8 my-4 pb-4 border-b relative">
         <h3 className="font-bold text-lg">{article?.articleName}</h3>
         <div className="flex mt-3 justify-between">
@@ -53,6 +61,7 @@ const PostDetail = () => {
               src={`https://avatars.githubusercontent.com/u/108189281?v=4`}
               className="w-10 h-10 rounded-full mx-2"
             />
+
             <div>
               {/* username */}
               <p className="font-bold">{article?.username}</p>
@@ -62,6 +71,9 @@ const PostDetail = () => {
               <button className="text-red-500" onClick={onDeletePost}>
                 삭제
               </button>
+              <button className="text-blue-500" onClick={() => setEditTg(true)}>
+                편집
+              </button>
               <button className="text-green-500" onClick={onChangeSoldStatus}>
                 {article?.status === "SELL"
                   ? "거래중으로 변경"
@@ -70,10 +82,11 @@ const PostDetail = () => {
             </div>
           </div>
 
-          <p className="pt-5">등록일: 2022-11-22</p>
+          <p className="pt-5">등록일: {article?.createdAt}</p>
+          {/* FIXME: 날짜값 변경하기 */}
         </div>
       </div>
-      {/* 위에꺼 컴포넌트 분리할것! */}
+      {/* TODO: 위에꺼 컴포넌트 분리할것! */}
 
       <div className="w-full bg-pink-300 flex">
         <ImageCarousel images={imgs} />
