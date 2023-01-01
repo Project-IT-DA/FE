@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { articleApi } from "../../API/articleApi";
 import { CameraIcon, CancelIcon } from "../../assets/icons";
+import { categoryList } from "../../data/categoryList";
 import ArrowUpToggle from "../../elements/ArrowUpToggle";
 import NanumToggle from "../../elements/NanumToggle";
 import PostInput from "../../elements/PostInput";
+import useCategoryPick from "../../hooks/useCategoryPick";
 import useMultiUploadImg from "../../hooks/useMultiUploadImg";
 
 interface IAricleInfo {
@@ -25,7 +27,13 @@ interface IAricleInfo {
   like: boolean;
 }
 
-const PostCreate = ({ article }: { article?: IAricleInfo }) => {
+const PostCreate = ({
+  article,
+  setEditTg,
+}: {
+  article?: IAricleInfo;
+  setEditTg?: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   //img 업로드
   //useMultiUploadImg 라는 커스텀 훅에서 base64 이미지 리스트와 이미지를 변환시켜주는 핸들러를 리턴해줍니다.
   //파라미터에는 업로드 할수있는 사진수를 지정해줍니다.
@@ -44,6 +52,8 @@ const PostCreate = ({ article }: { article?: IAricleInfo }) => {
   const navigate = useNavigate();
   //가격이 0원이 아니면 나눔토글 false;
 
+  // const [picks, categoryHandler] = useCategoryPick();
+  const [category, setCategory] = useState("");
   const { mutateAsync: editArticle } = articleApi.editArticle();
 
   const onPost = () => {
@@ -107,10 +117,25 @@ const PostCreate = ({ article }: { article?: IAricleInfo }) => {
         <ArrowUpToggle categoryTg={categoryTg} setCategoryTg={setCategoryTg} />
         {categoryTg ? (
           <div className="absolute top-10 left-2 w-[100px] border shadow-2xl bg-white">
-            <p>노트북</p>
-            <p>ㅋㅋㅋ</p>
-            <p>노트북</p>
-            <p>ㅋㅋㅋ</p>
+            {categoryList.map((ct, i) => (
+              <div>
+                <input
+                  type="radio"
+                  value={ct}
+                  key={i}
+                  id={ct}
+                  checked={category === ct}
+                  onChange={e => setCategory(e.target.value)}
+                  className="hidden"
+                />
+                <label
+                  htmlFor={ct}
+                  className={ct === category ? `text-blue-500` : ""}
+                >
+                  {ct}
+                </label>
+              </div>
+            ))}
           </div>
         ) : null}
       </div>
@@ -205,7 +230,15 @@ const PostCreate = ({ article }: { article?: IAricleInfo }) => {
       </div>
 
       <div className="grid grid-cols-2 gap-x-4 my-4 mx-6">
-        <button className="bg-[#9D9D9D] text-white py-4 rounded-md">
+        <button
+          className="bg-[#9D9D9D] text-white py-4 rounded-md"
+          onClick={e => {
+            e.preventDefault();
+            if (article && setEditTg) {
+              setEditTg(false);
+            }
+          }}
+        >
           취소
         </button>
         <button

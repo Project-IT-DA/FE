@@ -49,7 +49,7 @@ const PostDetail = () => {
     <div className="w-full  mb-[100px]">
       {editTg === true ? (
         <div className="absolute top-14 z-40 w-full bg-white h-full">
-          <PostCreate article={article} />
+          <PostCreate article={article} setEditTg={setEditTg} />
         </div>
       ) : null}
 
