@@ -1,7 +1,17 @@
+import { useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { UserInfoApi } from "../API/userInfoApi";
 import { EditIcon } from "../assets/icons";
+import { removeCookieToken } from "../config/cookies";
 
 const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   console.log("프로필사진변경");
+};
+
+const onLogout = () => {
+  removeCookieToken();
+  window.location.href = "/";
 };
 
 const MyPage = () => {
@@ -70,7 +80,9 @@ const MyPage = () => {
               <button className="pt-5 pb-5 pr-7 pl-7">
                 😢 회원탈퇴하고 잇다와 끊어지기 &gt;
               </button>
-              <button className="pt-5 pb-5 pr-7 pl-7">🖐 로그아웃 &gt;</button>
+              <button className="pt-5 pb-5 pr-7 pl-7" onClick={onLogout}>
+                🖐 로그아웃 &gt;
+              </button>
             </div>
           </div>
         </div>
