@@ -61,7 +61,7 @@ const PostCreate = ({
 
     const value = {
       articleName: title,
-      category: "PC",
+      category: category,
       location: location,
       sellPrice: price,
       substance: content,
@@ -95,6 +95,7 @@ const PostCreate = ({
       setContent(article.substance);
       setLocation(article.location);
       setPrice(String(article.sellPrice));
+      setCategory(article.category);
     }
   }, []);
 
@@ -114,13 +115,12 @@ const PostCreate = ({
         </button>
         <ArrowUpToggle categoryTg={categoryTg} setCategoryTg={setCategoryTg} />
         {categoryTg ? (
-          <div className="absolute top-10 left-2 w-[100px] border shadow-2xl bg-white">
+          <div className="absolute top-10 left-2 w-[140px] border shadow-2xl bg-white">
             {categoryList.map((ct, i) => (
-              <div key={i}>
+              <div key={i} className="h-6">
                 <input
                   type="radio"
                   value={ct}
-                  key={i}
                   id={ct}
                   checked={category === ct}
                   onChange={e => setCategory(e.target.value)}
@@ -128,7 +128,9 @@ const PostCreate = ({
                 />
                 <label
                   htmlFor={ct}
-                  className={ct === category ? `text-blue-500` : ""}
+                  className={
+                    ct === category ? `text-blue-500 text-lg` : "text-lg"
+                  }
                 >
                   {ct}
                 </label>
