@@ -6,7 +6,6 @@ import { categoryList } from "../../data/categoryList";
 import ArrowUpToggle from "../../elements/ArrowUpToggle";
 import NanumToggle from "../../elements/NanumToggle";
 import PostInput from "../../elements/PostInput";
-import useCategoryPick from "../../hooks/useCategoryPick";
 import useMultiUploadImg from "../../hooks/useMultiUploadImg";
 
 interface IAricleInfo {
@@ -52,7 +51,6 @@ const PostCreate = ({
   const navigate = useNavigate();
   //가격이 0원이 아니면 나눔토글 false;
 
-  // const [picks, categoryHandler] = useCategoryPick();
   const [category, setCategory] = useState("");
   const { mutateAsync: editArticle } = articleApi.editArticle();
 
@@ -118,7 +116,7 @@ const PostCreate = ({
         {categoryTg ? (
           <div className="absolute top-10 left-2 w-[100px] border shadow-2xl bg-white">
             {categoryList.map((ct, i) => (
-              <div>
+              <div key={i}>
                 <input
                   type="radio"
                   value={ct}
@@ -236,6 +234,8 @@ const PostCreate = ({
             e.preventDefault();
             if (article && setEditTg) {
               setEditTg(false);
+            } else {
+              navigate(-1);
             }
           }}
         >

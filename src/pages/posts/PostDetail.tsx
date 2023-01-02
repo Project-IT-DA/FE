@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { articleApi } from "../../API/articleApi";
 import { HeartIcon, MsgIcon } from "../../assets/icons";
+import FullScreenCarousel from "../../components/FullScreenCarousel";
 import ImageCarousel from "../../components/ImageCarousel";
 import { IImg } from "../../types/ImgType";
 import PostCreate from "./PostCreate";
@@ -17,6 +18,7 @@ const PostDetail = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [editTg, setEditTg] = useState(false);
+  const [fullTg, setFullTg] = useState(false);
 
   useEffect(() => {
     if (isSuccess && imgs.length === 0) {
@@ -51,6 +53,11 @@ const PostDetail = () => {
         <div className="absolute top-14 z-40 w-full bg-white h-full">
           <PostCreate article={article} setEditTg={setEditTg} />
         </div>
+      ) : null}
+      {fullTg === true ? (
+        <FullScreenCarousel>
+          <ImageCarousel images={imgs} />
+        </FullScreenCarousel>
       ) : null}
 
       <div className="mx-8 my-4 pb-4 border-b relative">
@@ -88,7 +95,7 @@ const PostDetail = () => {
       </div>
       {/* TODO: 위에꺼 컴포넌트 분리할것! */}
 
-      <div className="w-full bg-pink-300 flex">
+      <div className="w-full bg-pink-300 flex ">
         <ImageCarousel images={imgs} />
       </div>
 
