@@ -2,8 +2,17 @@ import { MenuIcon, CommentIcon } from "../../assets/icons";
 import ImageCarousel from "../../components/ImageCarousel";
 import Comment from "../../components/Comment";
 import { productImages } from "../../data/productImages";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { communityApi } from "../../API/communityApi";
 
 function CommunityDetail() {
+  const { id } = useParams();
+
+  const { data, isLoading, isSuccess } = communityApi.getCommunityDetail(
+    Number(id),
+  );
+  console.log(data, isLoading, isSuccess);
   return (
     <div className="w-full h-fit">
       <div className="flex justify-center mt-4 py-4 mx-4">

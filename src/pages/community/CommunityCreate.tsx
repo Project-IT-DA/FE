@@ -3,7 +3,7 @@ import { CameraIcon, CancelIcon } from "../../assets/icons";
 import ArrowUpToggle from "../../elements/ArrowUpToggle";
 import useMultiUploadImg from "../../hooks/useMultiUploadImg";
 
-const PostCreate = () => {
+const CommunityCreate = () => {
   const [uploadImg, uploadImgHandler, onDeleteImg] = useMultiUploadImg(5);
   const [categoryTg, setCategoryTg] = useState(false);
   const [content, setContent] = useState("");
@@ -111,4 +111,4 @@ const PostCreate = () => {
   );
 };
 
-export default PostCreate;
+export default CommunityCreate;
