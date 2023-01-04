@@ -12,6 +12,8 @@ import { ReactComponent as MenuIcon } from "./MenuIcon.svg";
 import { ReactComponent as CommentIcon } from "./CommentIcon.svg";
 import { ReactComponent as KakaoIcon } from "./KakaoIcon.svg";
 import { ReactComponent as LineHeartIcon } from "./LineHeartIcon.svg";
+import { ReactComponent as BookMarkFull } from "./BookmarkFull.svg";
+import { ReactComponent as BookMarkEmpty } from "./BookmarkEmpty.svg";
 
 export {
   HomeIcon,
@@ -28,4 +30,6 @@ export {
   CommentIcon,
   KakaoIcon,
   LineHeartIcon,
+  BookMarkFull,
+  BookMarkEmpty,
 };
